@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NumInput from '../Components/NumInput.js'
+import { NumInput } from '../index';
 
 function OBCalculator() {
 
@@ -32,6 +32,7 @@ function OBCalculator() {
 
   return (
     <div>
+        <h1>OB EXP CALCULATOR</h1>
         <form className="ob-calculator-form" onSubmit={handleSubmit}>
             <NumInput numInputValue={baseExpPerMob} onChangeNumInput={handleBaseExpPerMob} 
                       numInputText="Base EXP Per Mob" numInputName="baseEXP"/>
