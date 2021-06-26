@@ -51,9 +51,9 @@ function OBCalculator() {
             </label>
             <input type="submit" value="Submit" />
         </form>
-        <p>After {numOfOB} Odin Blessing used</p>
-        <p>You gained a total of {totalBaseEXP} BASE EXP</p>
-        <p>You gained a total of {totalJobEXP} JOB EXP</p>
+        <p>After <b>{numOfOB}</b> Odin Blessing used</p>
+        <p>You gained a total of <b>{totalBaseEXP}</b> BASE EXP</p>
+        <p>You gained a total of <b>{totalJobEXP}</b> JOB EXP</p>
     </div>
   );
 }

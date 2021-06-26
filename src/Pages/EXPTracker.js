@@ -54,10 +54,10 @@ function OBCalculator() {
                     timeInputText="Current Time" timeInputName="currentTime"/>
             <input type="submit" value="Submit" />
         </form>
-        <p>In {timeDiff} minutes</p>
-        <p>You gained a total of {EXPdiff} EXP</p>
-        <p>Which means you're getting {EXPperMin}/Minute</p>
-        <p>Which means you're getting {EXPperHour}/Hour</p>
+        <p>In <b>{timeDiff}</b> minutes</p>
+        <p>You gained a total of <b>{EXPdiff}</b> EXP</p>
+        <p>Which means you're getting <b>{EXPperMin}</b>/Minute</p>
+        <p>Which means you're getting <b>{EXPperHour}</b>/Hour</p>
     </div>
   );
 }
