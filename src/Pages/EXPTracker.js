@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
 import { NumInput, TimeInput } from '../index';
 
-function OBCalculator() {
+function EXPTracker() {
 
   const [initialEXP, setInitialEXP] = useState(0);
   const [currentEXP, setCurrentEXP] = useState(0);
-  const [initialTime, setInitialTime] = useState(Date());
-  const [currentTime, setCurrentTime] = useState(Date());
+  const [initialTime, setInitialTime] = useState("");
+  const [initialTimeInMin, setInitialTimeInMin] = useState(0);
+  const [currentTimeInMin, setCurrentTimeInMin] = useState(0);
+  const [currentTime, setCurrentTime] = useState("");
   const [EXPperMin, setEXPperMin] = useState("");
-  const [EXPperHour, setEXPperHour] = useState("");
   const [EXPdiff, setEXPDiff] = useState(0);
   const [timeDiff, setTimeDiff] = useState(0);
 
   //handle functions
   const handleInitialEXP = event => setInitialEXP(event.target.value);
   const handleCurrentEXP = event => setCurrentEXP(event.target.value);
-  const handleInitialTime = event => setInitialTime(event.target.value);
-  const handleCurrentTime = event => setCurrentTime(event.target.value);
-
+  const handleInitialTime = event => 
+  {
+    setInitialTime(event.target.value);
+    setInitialTimeInMin(hmToMinutes(event.target.value))
+  }
+  const handleCurrentTime = event => 
+  {
+    setCurrentTime(event.target.value);
+    setCurrentTimeInMin(hmToMinutes(event.target.value))
+  }
 
   function hmToMinutes(time) {
     var timeArray = time.split(':');
@@ -31,10 +39,15 @@ function OBCalculator() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    setEXPDiff(currentEXP - initialEXP);
-    setTimeDiff(hmToMinutes(currentTime) - hmToMinutes(initialTime));
-    setEXPperMin(EXPdiff/timeDiff);
-    setEXPperHour((EXPdiff/timeDiff)*60)
+    const expDiffVar = currentEXP - initialEXP;
+    const timeMinDiffVar = currentTimeInMin - initialTimeInMin;
+
+    setEXPDiff(expDiffVar);
+    setTimeDiff(timeMinDiffVar);
+
+    const expPerMinVar = Math.round(expDiffVar/timeMinDiffVar);
+
+    setEXPperMin(expPerMinVar);
 
     //console.log("Calculate EXP/Min based on time diff and EXP diff, and also EXP/Hour, and EXP/24h")
   }
@@ -57,9 +70,9 @@ function OBCalculator() {
         <p>In <b>{timeDiff}</b> minutes</p>
         <p>You gained a total of <b>{EXPdiff}</b> EXP</p>
         <p>Which means you're getting <b>{EXPperMin}</b>/Minute</p>
-        <p>Which means you're getting <b>{EXPperHour}</b>/Hour</p>
+        <p>Which means you're getting <b>{EXPperMin*60}</b>/Hour</p>
     </div>
   );
 }
 
-export default OBCalculator;
+export default EXPTracker;

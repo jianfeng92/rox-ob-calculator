@@ -5,6 +5,8 @@ function OBCalculator() {
 
   const [baseExpPerMob, setBaseExpPerMob] = useState(0);
   const [jobExpPerMob, setJobExpPerMob] = useState(0);
+  const [baseExpPerOB, setBaseExpPerOB] = useState(0);
+  const [jobExpPerOB, setJobExpPerOB] = useState(0);
   const [totalBaseEXP, setTotalBaseEXP] = useState(0);
   const [totalJobEXP, setTotalJobEXP] = useState(0);
   const [numOfOB, setNumOfOB] = useState(0);
@@ -21,12 +23,15 @@ function OBCalculator() {
 
     const odinBlessingMultiplier = 5;
     
-    const baseExpPerOB = baseExpPerMob / mobSize;
-    const jobExpPerOB = jobExpPerMob / mobSize;
+    const baseExpPerMobOnMobSize = Math.round(baseExpPerMob / mobSize);
+    const jobExpPerMobOnMobSize = Math.round(jobExpPerMob / mobSize);
+
+    setBaseExpPerOB(baseExpPerMob * odinBlessingMultiplier)
+    setJobExpPerOB(jobExpPerMob * odinBlessingMultiplier)
 
     // on Submit calculation
-    setTotalBaseEXP((baseExpPerOB * odinBlessingMultiplier) * numOfOB)
-    setTotalJobEXP((jobExpPerOB * odinBlessingMultiplier) * numOfOB)
+    setTotalBaseEXP((baseExpPerMobOnMobSize * odinBlessingMultiplier) * numOfOB)
+    setTotalJobEXP((jobExpPerMobOnMobSize * odinBlessingMultiplier) * numOfOB)
   }
   //end
 
@@ -52,8 +57,8 @@ function OBCalculator() {
             <input type="submit" value="Submit" />
         </form>
         <p>After <b>{numOfOB}</b> Odin Blessing used</p>
-        <p>You gained a total of <b>{totalBaseEXP}</b> BASE EXP</p>
-        <p>You gained a total of <b>{totalJobEXP}</b> JOB EXP</p>
+        <p>That's <b>{baseExpPerOB}</b> BASE EXP per OB, You will gain a total of <b>{totalBaseEXP}</b> BASE EXP</p>
+        <p>That's <b>{jobExpPerOB}</b> JOB EXP per OB, You will gain a total of <b>{totalJobEXP}</b> JOB EXP</p>
     </div>
   );
 }
