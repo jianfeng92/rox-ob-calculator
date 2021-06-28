@@ -1,38 +1,129 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+}
+.header {
+  height: 45px;
+  line-height: 45px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  display: block;
+  margin: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 48px;
+  max-height: 44px;
+  background: rgba(221, 221, 221, 0.92);
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 60px;
+}
+
+body {
+  /* font-family: "Sen", sans-serif; */
+  font-family: 'Karla', sans-serif;
+  background: #f9f9fa;
+}
+
+.container {
+  width: 50%;
+  margin: 7% auto;
+}
+
+.tab-header {
+  list-style: none;
+  background: transparent;
+  line-height: 30px;
+}
+
+.tab-header li {
+  display: inline;
+  padding: 7px 12px;
+  border-radius: 5px;
+  line-height: 35px;
+
+  cursor: pointer;
+}
+
+.tab-header li.active,
+.tab-header li:hover {
+  color: #fff;
+  background: #89b3ed; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom right,
+    #9CBFDD,
+    #89b3ed,
+    #7E92CD
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom right,
+    #9CBFDD,
+    #89b3ed,
+    #7E92CD
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.tab-content {
+  height: auto;
+  background: #fff;
+  border: 1px solid #dedeed;
+  margin-top: 12px;
+  width: 100%;
+  position: relative;
+}
+
+.tab-child {
+  padding: 20px;
+}
+
+footer {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+footer a {
+  color: #131313;
+  text-decoration: none;
+}
+footer img {
+  width: 35px;
+  /* vertical-align: inherit; */
+  position: relative;
+  top: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input[type=number] {
+  height: 40px;
+  padding-left: 8px;
+  width: 40%;
+  font-size: 1.1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input[type=submit] {
+  width: 40%;
+  margin-top: 20px;
+  height: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+input[type=time] {
+  height: 45px; 
+  width: 45%;
+  font-size: 1rem; 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
 }
+
+select {
+  height: 40px; 
+  width: 45%;
+  font-size: 1.1rem; 
+}
+
+

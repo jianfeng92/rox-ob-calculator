@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,8 +13,8 @@ ReactDOM.render(
 );
 
 //export
-export {default as NumInput } from '../src/Components/NumInput.js'
-export {default as TimeInput } from '../src/Components/TimeInput.js'
+export { default as NumInput } from '../src/Components/NumInput.js'
+export { default as TimeInput } from '../src/Components/TimeInput.js'
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NumInput, TimeInput } from '../index';
+import styled from 'styled-components';
 
 function EXPTracker() {
 
@@ -16,13 +17,11 @@ function EXPTracker() {
   //handle functions
   const handleInitialEXP = event => setInitialEXP(event.target.value);
   const handleCurrentEXP = event => setCurrentEXP(event.target.value);
-  const handleInitialTime = event => 
-  {
+  const handleInitialTime = event => {
     setInitialTime(event.target.value);
     setInitialTimeInMin(hmToMinutes(event.target.value))
   }
-  const handleCurrentTime = event => 
-  {
+  const handleCurrentTime = event => {
     setCurrentTime(event.target.value);
     setCurrentTimeInMin(hmToMinutes(event.target.value))
   }
@@ -32,8 +31,8 @@ function EXPTracker() {
 
     var hour = parseInt(timeArray[0]);
     var minute = parseInt(timeArray[1]);
-    
-    return (hour*60) + minute;
+
+    return (hour * 60) + minute;
   }
 
   function handleSubmit(e) {
@@ -45,7 +44,7 @@ function EXPTracker() {
     setEXPDiff(expDiffVar);
     setTimeDiff(timeMinDiffVar);
 
-    const expPerMinVar = Math.round(expDiffVar/timeMinDiffVar);
+    const expPerMinVar = Math.round(expDiffVar / timeMinDiffVar);
 
     setEXPperMin(expPerMinVar);
 
@@ -55,22 +54,26 @@ function EXPTracker() {
 
   return (
     <div>
-        <h1>EXP/MIN TRACKER</h1>
-        <form className="ob-calculator-form" onSubmit={handleSubmit}>
-            <NumInput numInputValue={initialEXP} onChangeNumInput={handleInitialEXP} 
-                      numInputText="Initial EXP" numInputName="initialEXP"/>
-            <NumInput numInputValue={currentEXP} onChangeNumInput={handleCurrentEXP} 
-                    numInputText="Current EXP" numInputName="currentEXP"/>
-            <TimeInput timeInputValue={initialTime} onChangeTimeInput={handleInitialTime} 
-                      timeInputText="Initial Time" timeInputName="initialTime"/>
-            <TimeInput timeInputValue={currentTime} onChangeTimeInput={handleCurrentTime} 
-                    timeInputText="Current Time" timeInputName="currentTime"/>
-            <input type="submit" value="Submit" />
-        </form>
+      <h1>EXP/MIN TRACKER</h1>
+      <form className="ob-calculator-form" onSubmit={handleSubmit}>
+        <NumInput numInputValue={initialEXP} onChangeNumInput={handleInitialEXP}
+          numInputText="Initial EXP" numInputName="initialEXP" />
+        <NumInput numInputValue={currentEXP} onChangeNumInput={handleCurrentEXP}
+          numInputText="Current EXP" numInputName="currentEXP" />
+        <TimeInput timeInputValue={initialTime} onChangeTimeInput={handleInitialTime}
+          timeInputText="Initial Time" timeInputName="initialTime" />
+        <TimeInput timeInputValue={currentTime} onChangeTimeInput={handleCurrentTime}
+          timeInputText="Current Time" timeInputName="currentTime" />
+        <ButtonContainer>
+          <input type="submit" value="Submit" />
+        </ButtonContainer>
+      </form>
+      <ResultContainer>
         <p>In <b>{timeDiff}</b> minutes</p>
         <p>You gained a total of <b>{EXPdiff}</b> EXP</p>
         <p>Which means you're getting <b>{EXPperMin}</b>/Minute</p>
-        <p>Which means you're getting <b>{EXPperMin*60}</b>/Hour</p>
+        <p>Which means you're getting <b>{EXPperMin * 60}</b>/Hour</p>
+      </ResultContainer>
     </div>
   );
 }
@@ -78,3 +81,15 @@ function EXPTracker() {
 //Test branch
 
 export default EXPTracker;
+
+const ResultContainer = styled.div`
+background-color: #86B404;
+padding: 10px;
+margin-top: 20px;
+line-height: 2;
+`
+
+const ButtonContainer = styled.div`
+display: flex;
+justify-content: center;
+`
